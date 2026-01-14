@@ -166,12 +166,13 @@ function DesktopNavBar() {
             </NavigationMenu>
 
             {/* CTA Button */}
-            <Link
-                to="/join"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2.5 rounded-full text-sm font-medium transition-colors"
+            <a
+                href="https://gdg.community.dev/gdg-on-campus-vellore-institute-of-technology-bhopal-india/"
+                target="_blank"
+                className="bg-linear-to-r from-sky-500 to-blue-600 text-white hover:from-sky-600 hover:to-blue-700 px-6 py-2.5 rounded-full text-sm font-medium transition shadow-lg"
             >
-                Join Us
-            </Link>
+                GDGC × VIT Bhopal University
+            </a>
         </nav>
     );
 }
