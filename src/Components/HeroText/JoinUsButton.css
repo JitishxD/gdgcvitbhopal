@@ -1,38 +1,106 @@
-@reference "../../index.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Button container - bottom center */
+.button-container {
+  position: fixed;           /* always fixed relative to viewport */
+  bottom: 20px;              /* distance from bottom */
+  left: 50%;                 /* center horizontally */
+  transform: translateX(-50%); /* exact horizontal center */
+  display: flex;
+  justify-content: center;
+  z-index: 1000;             /* stay above other elements */
+}
 
-@layer utilities {
-  /* Button styling */
-  .btn-primary {
-    @apply flex items-center gap-2 px-5 py-3 rounded-xl border-2 border-black bg-blue-600 text-white font-semibold shadow-lg shadow-black/50 transition-transform duration-300 relative overflow-hidden;
+/* Join Us Button */
+.join-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2D8CFF;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #000;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect */
+.join-btn:hover {
+  background: #1d7cf5;
+}
+
+/* Pressed effect */
+.join-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #000;
+}
+
+/* Focus outline */
+.join-btn:focus {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+/* Icon styling inside button */
+.icon {
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  transform: rotate(-45deg); /* diagonal by default */
+  transition: transform 0.3s ease;
+}
+
+/* Animate arrow on hover or click */
+.join-btn:hover .icon,
+.join-btn:active .icon {
+  transform: rotate(45deg) translate(4px, 4px); /* diagonal + slight movement */
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .join-btn {
+    width: 90%;
+    justify-content: center;
+    font-size: 15px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 0 #000;
   }
 
-  /* Hover effects for the button */
-  .btn-primary:hover {
-    @apply scale-105 bg-blue-700;
-    animation: pulseShadow 0.6s ease-in-out infinite;
-  }
-
-  /* Arrow styling and animation */
-  .arrow {
-    @apply inline-block -rotate-45 transition-transform duration-300;
-  }
-
-  .btn-primary:hover .arrow {
-    animation: bounceArrow 0.4s ease-in-out forwards;
-  }
-
-  /* Arrow bounce + diagonal slide */
-  @keyframes bounceArrow {
-    0%, 100% { transform: translate(0, 0) rotate(-45deg); }
-    50% { transform: translate(4px, -4px) rotate(-45deg); }
-  }
-
-  /* Button shadow pulse */
-  @keyframes pulseShadow {
-    0%, 100% { box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5); }
-    50% { box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7); }
+  .icon {
+    font-size: 16px;
   }
 }
+
+@media (max-width: 380px) {
+  .join-btn {
+    width: 85%;
+    padding: 9px 16px;
+    font-size: 14px;
+  }
+
+  .icon {
+    font-size: 15px;
+  }
+}
+/* Icon styling inside button */
+.icon {
+  font-size: 18px;
+  font-weight: bold;
+  display: inline-block;
+  transform: rotate(-45deg); /* arrow diagonal by default */
+  transition: transform 0.3s ease;
+}
+
+/* Animate arrow ONLY on hover or click */
+.join-btn:hover .icon,
+.join-btn:active .icon {
+  transform: rotate(-45deg) translate(6px, -6px); /* move diagonally only on hover/click */
+}
+/* Remove focus outline after clicking */
+.join-btn:focus {
+  outline: none; /* removes the blue border */
+}
+

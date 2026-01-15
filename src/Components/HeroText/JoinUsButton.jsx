@@ -1,15 +1,13 @@
 import React from "react";
-import "./JoinUsButton.css"; // CSS-first Tailwind styling
+import "./JoinUsButton.css";
 
-const JoinUsButton = () => {
+export default function JoinUsButton() {
   return (
-    <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 z-50">
-      <button className="btn-primary group">
-        <span className="arrow">➔</span>
-        Join Us
-      </button>
-    </div>
-  );
-};
+    <div className="button-container">
+  <button className="join-btn">
+    <span className="icon">⇨</span> Join Us
+  </button>
+</div>
 
-export default JoinUsButton;
+  );
+}
