@@ -35,7 +35,7 @@ export default function HeroText() {
                     <img
                         src={building}
                         alt="VIT Bhopal Building"
-                        className="block w-auto max-w-[110%] object-contain translate-y-6 h-[400px] lg:h-[550px] xl:h-[600px] 2xl:h-[750px] max-h-[80vh]"
+                        className="block w-auto max-w-[110%] object-contain translate-y-6 h-[400px] lg:h-[550px] xl:h-[550px] 2xl:h-[700px] max-h-[80vh]"
                     />
                 </div>
             </section>
