@@ -15,7 +15,7 @@ const techDomainLinks = [
     {
         title: "Web Development Team",
         href: "/teams/tech/webDTeam",
-        description: "Lorem ipsum dolor sit amet.",
+        description: "Building amazing web experiences",
     },
     {
         title: "Android Dev Team",
@@ -35,7 +35,7 @@ const techDomainLinks = [
     {
         title: "Women Techmakers",
         href: "/teams/tech/womenTechmakers",
-        description: "Lorem ipsum dolor sit amet.",
+        description: "",
     },
 ];
 
@@ -54,6 +54,11 @@ const nonTechDomainLinks = [
         title: "Design & Content Team",
         href: "/teams/nonTech/designContentTeam",
         description: "Creating stunning visuals and content",
+    },
+    {
+        title: "Videography and Photography Team",
+        href: "/teams/nonTech/videoPhotographyTeam",
+        description: "Capturing moments...",
     },
 ];
 

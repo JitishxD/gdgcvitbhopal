@@ -47,6 +47,10 @@ const navItems = [
                 title: "Design & Content Team",
                 href: "/teams/nonTech/designContentTeam",
             },
+            {
+                title: "Videography and Photography Team",
+                href: "/teams/nonTech/videoPhotographyTeam",
+            }
         ],
     },
     {
@@ -134,7 +138,7 @@ function MobileNavBar() {
                             Home
                         </MobileNavLink>
 
-                        <Accordion type="single" collapsible>
+                        <Accordion type="single" collapsible className="border-b border-border">
                             <AccordionItem value="tech">
                                 <AccordionTrigger className="px-3 py-3 text-base">
                                     Tech Domain
@@ -184,7 +188,7 @@ function MobileNavBar() {
                         </MobileNavLink>
                     </div>
 
-                    <div className="p-4 border-t border-border">
+                    <div className="p-4">
                         <Link
                             to="/join"
                             onClick={closeMenu}
