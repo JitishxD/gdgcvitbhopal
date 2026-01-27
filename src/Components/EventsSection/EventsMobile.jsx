@@ -31,13 +31,13 @@ function EventsMobile() {
                     <img
                         src={wheel}
                         alt="Decorative wheel"
-                        className="h-10 w-10 wheel-rotate"
+                        className="h-16 w-16 wheel-rotate"
                     />
                     <div className="flex items-center justify-center gap-3">
                         <img
                             src={leftBracket}
                             alt="Left bracket"
-                            className="h-6"
+                            className="h-16"
                         />
                         <h2 className="text-3xl font-extrabold text-black">
                             Events
@@ -45,13 +45,13 @@ function EventsMobile() {
                         <img
                             src={rightBracket}
                             alt="Right bracket"
-                            className="h-6"
+                            className="h-16"
                         />
                     </div>
                     <img
                         src={wheel}
                         alt="Decorative wheel"
-                        className="h-10 w-10 wheel-rotate"
+                        className="h-16 w-16 wheel-rotate"
                     />
                 </div>
 
@@ -79,7 +79,7 @@ function EventsMobile() {
                                 <img
                                     src={gdgBadge}
                                     alt="GDG badge"
-                                    className="absolute bottom-1 right-3 h-14 w-14 rounded-md"
+                                    className="absolute bottom-1 right-3 h-16 w-16 rounded-md"
                                 />
                             </div>
                         </article>

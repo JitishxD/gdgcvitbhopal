@@ -234,7 +234,7 @@ export default function DesktopFooter() {
                         © {year} GDG VIT Bhopal. All rights reserved.
                     </div>
                     <div className="text-xs text-white/60">
-                        Built with ❤️ By GDG Web Developtem Team VIT Bhopal.
+                        Built with ❤️ By GDG Web Development Team VIT Bhopal.
                     </div>
                 </div>
             </div>
