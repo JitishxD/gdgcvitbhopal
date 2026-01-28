@@ -10,7 +10,7 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 4rem 2rem;
   position: sticky;
   border-top: 5px blue;
@@ -23,7 +23,7 @@
   border-radius: 24px;
   padding: 3rem;
   max-width: 500px;
-  width: 100%;
+  width: 70%;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   border-top: 20px solid blue;
@@ -31,16 +31,15 @@
 }
 
 .vision-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin: 0 0 2rem 0;
   color: #1a1a2e;
-  letter-spacing: -0.02em;
 }
 
 .vision-content {
   position: relative;
-  min-height: 300px;
+  min-height: 200px;
   overflow: hidden;
 }
 
@@ -49,8 +48,7 @@
 }
 
 .vision-text p {
-  font-size: 1.25rem;
-  line-height: 1.8;
+  font-size: 1.2rem;
   color: #4a4a4a;
   margin: 0 0 2rem 0;
 }
@@ -87,9 +85,9 @@
 
 .right-panel {
   flex: 1;
-  overflow-y: auto;
+  overflow: hidden;
   overflow-x: hidden;
-  padding: 0 2rem;
+  padding: 4rem 2rem 0;
   scroll-behavior: smooth;
 }
 
@@ -117,7 +115,9 @@
   padding: 3rem;
   max-width: 500px;
   width: 100%;
-  height:500px;
+  height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
   border-top: 20px solid rgb(255, 0, 0);
@@ -250,15 +250,7 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .scroll-linked-section {
-    flex-direction: column;
-    height: auto;
-  }
-
   .left-panel {
-    position: relative;
-    height: auto;
-    min-height: 60vh;
     padding: 3rem 1.5rem;
   }
 
@@ -275,7 +267,6 @@
   }
 
   .right-panel {
-    height: 100vh;
     padding: 0 1.5rem;
   }
 
@@ -295,6 +286,17 @@
 }
 
 @media (max-width: 640px) {
+  .scroll-linked-section {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-panel {
+    position: relative;
+    height: auto;
+    min-height: 60vh;
+  }
+
   .left-panel {
     padding: 2rem 1rem;
   }
