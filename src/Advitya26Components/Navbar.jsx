@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Home, Gamepad2, Users, Store, Info } from 'lucide-react';
+import { Home, Gamepad2, Users, Store, Info, HelpCircle, Menu, X } from 'lucide-react';
 import './Navbar.css';
 
 const navLinks = [
@@ -10,17 +10,29 @@ const navLinks = [
   { href: '/community', label: 'Community', icon: Users, underlineColor: '#eab308' },
   { href: '/store', label: 'Store', icon: Store, underlineColor: '#22c55e' },
   { href: '/about', label: 'About', icon: Info, underlineColor: '#ef4444' },
+  { href: '/advitya/faqs', label: 'FAQs', icon: HelpCircle, underlineColor: '#8b5cf6' },
 ];
 
 export function GlobalNavbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isRotatingLogo, setIsRotatingLogo] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const img = new Image();
     img.src = '/Olympics-Logo.png';
     if (img.decode) img.decode().catch(() => {});
+
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  const handleToggle = () => {
+    if (isMobile) {
+      setIsOpen(!isOpen);
+    }
+  };
 
   return (
     <motion.header
@@ -31,12 +43,13 @@ export function GlobalNavbar() {
     >
       <div
         className="flex flex-row-reverse items-center gap-4"
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
+        onMouseEnter={() => !isMobile && setIsOpen(true)}
+        onMouseLeave={() => !isMobile && setIsOpen(false)}
       >
         {/* Logo */}
         <motion.div
           className="w-17 h-17 cursor-pointer flex items-center justify-center"
+          onClick={handleToggle}
           whileHover={{ scale: 1.5, rotate: 360 }}
           transition={{ duration: 0.3, ease: 'linear',}}
           style={{
@@ -53,9 +66,9 @@ export function GlobalNavbar() {
           />
         </motion.div>
 
-        {/* Menu */}
+        {/* Desktop Menu */}
         <AnimatePresence>
-          {isOpen && (
+          {isOpen && !isMobile && (
             <motion.nav
               initial={{ opacity: 0, width: 0 }}
               animate={{ opacity: 1, width: 'auto' }}
@@ -94,7 +107,42 @@ export function GlobalNavbar() {
           )}
         </AnimatePresence>
 
- 
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isOpen && isMobile && (
+            <motion.nav
+              initial={{ opacity: 0, scale: 0.8, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="fixed top-20 right-4 rounded-2xl"
+              style={{
+                background: '#faf8e0',
+                backdropFilter: 'blur(6px)',
+                WebkitBackdropFilter: 'blur(6px)',
+                boxShadow: '0 0 15px rgba(21, 21, 21, 0.6), 0 0 30px rgba(32, 18, 18, 0.4)',
+              }}
+            >
+              <ul className="flex flex-col gap-1 p-4">
+                {navLinks.map((link) => {
+                  const Icon = link.icon;
+                  return (
+                    <motion.li key={link.href} whileTap={{ scale: 0.95 }}>
+                      <Link
+                        to={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className="relative flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-black/10 transition-colors text-black text-base"
+                      >
+                        <Icon size={20} />
+                        <span className="font-medium">{link.label}</span>
+                      </Link>
+                    </motion.li>
+                  );
+                })}
+              </ul>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );
