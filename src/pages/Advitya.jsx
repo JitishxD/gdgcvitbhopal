@@ -11,10 +11,6 @@ import Test from "@/Advitya26Components/Test";
 import "@/Advitya26Components/AdvityaMain.css";
 
 function Advitya() {
-<<<<<<< HEAD
-    const [isMobile, setIsMobile] = useState(false);
-
-=======
     // State to control navbar logo visibility - starts hidden, shows when rings fade
     const [showNavbarLogo, setShowNavbarLogo] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
@@ -27,7 +23,6 @@ function Advitya() {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
->>>>>>> b4dae168d3d8fe812fcbb1db93d21372a6588cdd
     useEffect(() => {
         const root = document.documentElement;
         root.classList.add("advitya-page");
@@ -38,11 +33,11 @@ function Advitya() {
         };
 
         handleResize();
-        window.addEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
 
         return () => {
             root.classList.remove("advitya-page");
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
@@ -51,15 +46,16 @@ function Advitya() {
             <div className="fixed top-0 left-0 w-full h-[10vh] z-50">
                 <GlobalNavbar showLogo={showNavbarLogo} />
             </div>
-<<<<<<< HEAD
-            {isMobile ? <MobileParallaxBackground /> : <ParallaxBackground />}
-            
-=======
-            <ParallaxBackground
-                onRingsFadeStart={() => setShowNavbarLogo(true)}
-            />
+            {isMobile ? (
+                <MobileParallaxBackground
+                    onRingsFadeStart={() => setShowNavbarLogo(true)}
+                />
+            ) : (
+                <ParallaxBackground
+                    onRingsFadeStart={() => setShowNavbarLogo(true)}
+                />
+            )}
 
->>>>>>> b4dae168d3d8fe812fcbb1db93d21372a6588cdd
             <div className="relative z-10" style={{ marginTop: "-100vh" }}>
                 {/* Space paralax background */}
                 <div style={{ height: "100vh" }} />

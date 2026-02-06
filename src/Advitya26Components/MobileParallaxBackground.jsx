@@ -1,9 +1,13 @@
 import { motion, useScroll, useSpring, useTransform } from 'motion/react'
 import OlympicRings from './OlympicRings'
 
-const MobileParallaxBackground = () => {
+const MobileParallaxBackground = ({ onRingsFadeStart = () => {} }) => {
     const { scrollYProgress } = useScroll();
-    const x = useSpring(scrollYProgress, { stiffness: 100, damping: 50, mass: 1 });
+    const x = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 50,
+        mass: 1,
+    });
 
     // Reduced parallax intensity for mobile - much subtler movements
     // const bridge = useTransform(x, [0, 0.1], [0, 150]);
@@ -16,9 +20,6 @@ const MobileParallaxBackground = () => {
     const blurValue = useTransform(scrollYProgress, [0.15, 0.5], [0, 6]);
     const blur = useTransform(blurValue, (v) => `blur(${v}px)`);
 
-    // Subtle scale effect for mobile
-    const scale = useTransform(scrollYProgress, [0, 0.4], [1, 0.95]);
-
     return (
         <div className='sticky top-0 h-screen w-full z-0 border-none'>
             <motion.div
@@ -26,7 +27,6 @@ const MobileParallaxBackground = () => {
                 style={{
                     transformOrigin: 'center center',
                     filter: blur,
-                    scale: scale,
                 }}
             >
                 {/* Olympic Rings - Optimized for Mobile */}
@@ -38,6 +38,7 @@ const MobileParallaxBackground = () => {
                     assembleY={0.5}
                     finalY={0.15}
                     startFromBelow={true}
+                    onFadeStart={onRingsFadeStart}
                 />
 
                 {/* Golden Bridge - Mobile Optimized */}
