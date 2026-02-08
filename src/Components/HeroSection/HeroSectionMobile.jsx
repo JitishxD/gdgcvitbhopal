@@ -30,12 +30,12 @@ function HeroSectionMobile() {
                 alt=""
                 aria-hidden="true"
                 className="pointer-events-none scale-x-[-1] -translate-x-2 absolute -right-1 top-40 w-45 opacity-90"
-                // animate={{  x: [0, "80vw", 0] }}
-                // transition={{
-                //   duration: 40,
-                //   repeat: Infinity,
-                //   ease: "easeInOut",
-                // }}
+                animate={{  x: [0, "80vw", 0] }}
+                transition={{
+                  duration: 40,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
             />
             <motion.img
                 src={Cloud_Elem_2}
