@@ -1,3 +1,4 @@
+
 .scroll-linked-section {
   display: flex;
   flex-direction: column;
@@ -12,7 +13,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap: 3rem;
+  gap: 1.5rem;
   width: 100%;
 }
 
@@ -116,12 +117,32 @@
 }
 
 .team-heading {
-  font-family: 'Syne', sans-serif;
-  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
   color: black;
-  font-size: 2rem;
+  font-size: 4.5rem;
   text-align: center;
   margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.heading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.bracket {
+  width: 70px;
+  height: auto;
+}
+
+.left-bracket {
+}
+
+.right-bracket {
 }
 
 .profiles-container {
@@ -305,7 +326,11 @@
   }
 
   .team-heading {
-    font-size: 1.8rem;
+    font-size: 2.3rem;
+  }
+
+  .bracket {
+    width: 49px;
   }
 }
 
@@ -322,7 +347,7 @@
 
   .vision-card,
   .profiles-container {
-    max-width: 400px;
+    max-width: 450px;
     width: 100%;
   }
 
@@ -335,7 +360,11 @@
   }
 
   .team-heading {
-    font-size: 1.6rem;
+    font-size: 2rem;
+  }
+
+  .bracket {
+    width: 40px;
   }
 }
 
@@ -371,7 +400,7 @@
   }
 
   .vision-text p {
-    font-size: 0.81rem;
+    font-size: 0.79rem;
     margin-bottom: 1rem;
     line-height: 1.4;
   }
@@ -402,7 +431,11 @@
   }
 
   .team-heading {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+  }
+
+  .bracket {
+    width: 33px;
   }
 
   .profile-card {
