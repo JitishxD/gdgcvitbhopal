@@ -14,8 +14,8 @@ export default function DinoFollower() {
     if (!dino) return;
 
     // Set initial position
-    dinoX.current = window.innerWidth * 0.01; // 2% from left
-dinoY.current = window.innerHeight * 0.06; // 6% from top
+    dinoX.current = window.innerWidth * 0.02; // 2% from left
+dinoY.current = window.innerHeight * 0.09; // 6% from top
 
 
     targetX.current = dinoX.current;
@@ -39,7 +39,7 @@ dinoY.current = window.innerHeight * 0.06; // 6% from top
     let rafId;
 
     const animateDino = () => {
-      const speed = 0.005;
+      const speed = 0.029;
 
       const dx = targetX.current - dinoX.current;
       const dy = targetY.current - dinoY.current;
@@ -51,8 +51,8 @@ dinoY.current = window.innerHeight * 0.06; // 6% from top
       }
 
       // Clamp inside screen
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
+     const vw = document.documentElement.scrollWidth;
+const vh = document.documentElement.scrollHeight;
 
       const w = dino.offsetWidth;
       const h = dino.offsetHeight;
@@ -81,7 +81,7 @@ dinoY.current = window.innerHeight * 0.06; // 6% from top
       ref={dinoRef}
       src="/olympicsImages/dino.gif"
       alt="dino"
-      className=" z-[9999] select-none pointer-events-none absolute left-[2%] top-[6%] lg:w-20 xl:w-20"
+      className=" z-[9999] select-none pointer-events-none absolute lg:w-20 xl:w-20"
       style={{
           left: 0,
           top: 0,
