@@ -11,6 +11,7 @@ import { motion } from "motion/react";
 
 import "@/shadcn/styles/neobrutalism.css";
 import { MapPin } from "lucide-react";
+import { FlipWords } from "../textAnimations/FlipWords";
 
 export default function HeroSectionDesktop() {
   return (
@@ -42,7 +43,7 @@ export default function HeroSectionDesktop() {
         src={cloudRight}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute right-[2%] top-[22%] w-24 lg:w-28 xl:w-32 opacity-90"
+        className="pointer-events-none absolute right-[2%] top-[9%] w-24 lg:w-28 xl:w-32 opacity-90"
         initial={{ x: 0 }}
         animate={{ x: ["0vw", "-80vw", "0vw"] }}
         transition={{
@@ -137,9 +138,15 @@ export default function HeroSectionDesktop() {
               <span className="text-4xl lg:text-5xl xl:text-6xl font-extrabold [-webkit-text-stroke:1px_black] text-[#4285F4]">
                 we are
               </span>
-              <span className="text-4xl lg:text-5xl xl:text-6xl font-black text-black">
+              {/* <span className="text-4xl lg:text-5xl xl:text-6xl font-black text-black">
                 gdgc<span className="text-[#ff2d55]">.</span>
-              </span>
+              </span> */}
+              <div>
+              <FlipWords 
+              words = {["GDGC", "Devs", "Creators", "Innovators"]}
+              className="text-4xl lg:text-5xl xl:text-6xl font-black text-black"/>
+              <span className="text-[#ff2d55] text-4xl lg:text-5xl xl:text-6xl font-extrabold">.</span>
+              </div>
             </span>
           </h1>
 

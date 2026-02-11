@@ -7,10 +7,11 @@ import Cloud_Elem_1 from "@/assets/Cloud_Elem_1.svg";
 import Cloud_Elem_2 from "@/assets/Cloud_Elem_2.svg";
 import planet from "@/assets/Planets_Image.svg";
 import kiteLeft from "@/assets/Kite_Element_1.svg";
-import kiteRight from "@/assets/Kite_Element_2.svg";
+// import kiteRight from "@/assets/Kite_Element_2.svg";
 import learn from "@/assets/learn.svg";
 import build from "@/assets/build.png";
-import gdgLogo from "@/assets/GDG Logo.svg";
+// import gdgLogo from "@/assets/GDG Logo.svg";.
+import { FlipWords } from "../textAnimations/FlipWords";
 
 import gdgLeftHalf from "@/assets/gdg_left_half.png";
 import gdgRightHalf from "@/assets/gdg_right_half.png";
@@ -98,9 +99,15 @@ function HeroSectionMobile() {
                         <span className="inline-block text-[30px] font-extrabold text-[#4285F4]">
                             we are
                         </span>
-                        <span className="inline-block text-[30px] font-black text-black">
+                        {/* <span className="inline-block text-[30px] font-black text-black">
                             gdgc<span className="text-[#ff2d55]">.</span>
-                        </span>
+                        </span> */}
+                        <div>
+                            <FlipWords 
+                            words = {["GDGC", "Devs", "Creators", "Innovators"]}
+                            className="text-[30px] lg:text-[35px] xl:text-[40px] font-black text-black"/>
+                            <span className="text-[#ff2d55] text-4xl lg:text-5xl xl:text-6xl font-extrabold">.</span>
+                            </div>
                     </span>
                 </h1>
 
