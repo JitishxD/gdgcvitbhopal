@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import footerCloud from "@/assets/footer_cloud_img.svg";
+// import footerCloud from "@/assets/footer_cloud_img.svg";
 import {
     Github,
     Instagram,
@@ -18,14 +18,14 @@ export default function DesktopFooter() {
     return (
         <footer className="hidden lg:block relative w-full overflow-hidden bg-[#0f1115] text-white">
             {/* Cloud header */}
-            <div className="pointer-events-none select-none relative w-full">
+            {/* <div className="pointer-events-none select-none relative w-full">
                 <img
                     src={footerCloud}
                     alt=""
                     className="w-full h-80 scale-x-120"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-16 bg-linear-to-b from-transparent to-[#0f1115]" />
-            </div>
+            </div> */}
 
             <div className="mx-auto max-w-6xl px-8 pt-10 pb-10">
                 <div className="grid grid-cols-12 gap-10">

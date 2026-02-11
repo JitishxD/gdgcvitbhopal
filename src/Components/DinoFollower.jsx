@@ -39,7 +39,7 @@ dinoY.current = window.innerHeight * 0.09; // 6% from top
     let rafId;
 
     const animateDino = () => {
-      const speed = 0.029;
+      const speed = 0.0199;
 
       const dx = targetX.current - dinoX.current;
       const dy = targetY.current - dinoY.current;
@@ -81,7 +81,7 @@ const vh = document.documentElement.scrollHeight;
       ref={dinoRef}
       src="/olympicsImages/dino.gif"
       alt="dino"
-      className=" z-[9999] select-none pointer-events-none absolute lg:w-20 xl:w-20"
+      className=" z-9999 select-none pointer-events-none absolute w-15"
       style={{
           left: 0,
           top: 0,
