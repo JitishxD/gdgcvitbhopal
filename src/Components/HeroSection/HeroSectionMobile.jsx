@@ -17,7 +17,7 @@ import gdgLeftHalf from "@/assets/gdg_left_half.png";
 import gdgRightHalf from "@/assets/gdg_right_half.png";
 
 import { Button } from "@/shadcn/ui/button.jsx";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, MapPin } from "lucide-react";
 
 function HeroSectionMobile() {
     return (
@@ -184,12 +184,18 @@ function HeroSectionMobile() {
                             </div>
                     </span>
                 </h1>
-
-                <div className="mt-2 text-[14px] leading-tight text-zinc-700 font-semibold">
-                    17.3616° N, 78.4747° E
-                </div>
-                <div className="text-[14px] font-semibold text-[#4285F4]">
-                    VIT Bhopal, India
+ 
+                <div className="mt-2 flex flex-col items-center">
+                  <a
+                  href="https://www.google.com/maps/search/?api=1&query=23.076944,76.851111"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1 text-sm font-semibold text-[#4285F4]"
+                  >
+                  <MapPin className="h-4 w-4" color="#4285F4" />
+                  <span>VIT Bhopal, India</span>
+                  </a>
+                  <span className="text-xs text-zinc-600 mt-1">17.3616° N, 78.4747° E</span>
                 </div>
 
                 {/* Building illustration */}
