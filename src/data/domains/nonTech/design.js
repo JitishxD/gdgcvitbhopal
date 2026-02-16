@@ -172,6 +172,13 @@ const designDomain = {
                 linkedin: "",
                 github: "",
             },
+            {
+                name: "Anushka Singh",
+                role: "Core Member",
+                avatar: "/Domainimages/N-TechDomainimages/Design&contentteamimages/Anushka Singh.png",
+                linkedin: "https://www.linkedin.com/in/anushka-singh-8680a53b0",
+                github: "https://github.com/AnushkaS0607",
+            },
         ],
     },
 };

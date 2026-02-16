@@ -26,11 +26,11 @@ export default function AboutCard() {
                         {/* Left - Heading */}
                         <div className="md:w-1/2">
                             <span className="inline-block text-xs sm:text-sm font-bold tracking-widest text-blue-600 uppercase mb-4 sm:mb-6">
-                                About GDG
+                                About Google Olympics
                             </span>
                             <h2 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-black leading-tight text-gray-900">
                                 Do Crazy Things
-                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-green-500 to-yellow-500">
+                                <span className="block text-transparent bg-clip-text bg-linear-to-r from-blue-600 via-green-500 to-yellow-500">
                                     That Matter.
                                 </span>
                             </h2>
@@ -38,8 +38,8 @@ export default function AboutCard() {
 
                         {/* Right - Description */}
                         <div className="md:w-1/2">
-                            <p className="text-gray-600 text-base sm:text-lg md:text-lg lg:text-xl leading-relaxed mb-8 lg:mb-10">
-                                Google Developer Group on Campus are university-based community groups for students interested in <span className="text-blue-600 font-semibold">Latest technologies</span>. Students from all programs with an interest in growing as a developer are <span className="text-green-600 font-semibold">welcome</span>.
+                            <p className="text-gray-600 text-base sm:text-lg md:text-lg lg:text-lg leading-relaxed mb-8 lg:mb-10">
+                                <span className="text-blue-600 font-semibold">Google Olympics 2.0</span> is a fun and exciting team based event that combines creativity, competition, and technology. With a dynamic point based system and a <span className="text-green-600 font-semibold">live scorecard</span>, every round adds to the intensity as teams strive to secure the top position. Join us for a joyful and action packed day of challenges, excitement, and unforgettable experiences.
                             </p>
 
                             {/* Stats */}

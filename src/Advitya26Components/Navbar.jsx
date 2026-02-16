@@ -1,22 +1,29 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Home, Gamepad2, Trophy, Images, HelpCircle, Menu, X } from 'lucide-react';
+import { useAdvityaScrollContext } from '@/context/AdvityaScrollContext';
 import './Navbar.css';
 
 const navLinks = [
-  { href: '/#advitya#Advityahome', label: 'Home', icon: Home, underlineColor: '#3b82f6' },
-  { href: '/#advitya#Advityagames', label: 'Games', icon: Gamepad2, underlineColor: '#000000' },
-  { href: '/#advitya#AdvityaFooter', label: 'Leaderboard', icon: Trophy, underlineColor: '#f59e0b' },
-  { href: '/advitya/faqs', label: 'FAQ', icon: HelpCircle, underlineColor: '#8b5cf6' },
-  { href: '/advitya#AdvityaFooter', label: 'Footer', icon: Images, underlineColor: '#06b6d4' },
-
+  { id: 'home', label: 'Home', icon: Home, underlineColor: '#3b82f6' },
+  { id: 'games', label: 'Games', icon: Gamepad2, underlineColor: '#000000' },
+  { id: 'faq', label: 'FAQ', icon: HelpCircle, underlineColor: '#8b5cf6' },
+  { id: 'footer', label: 'Footer', icon: Images, underlineColor: '#06b6d4' },
 ];
 
 export function GlobalNavbar({ showLogo = true }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [logoOpacity, setLogoOpacity] = useState(showLogo ? 1 : 0);
+  const { scrollToHome, scrollToGames, scrollToFaq, scrollToFooter } = useAdvityaScrollContext();
+
+  const scrollActions = {
+    home: scrollToHome,
+    games: scrollToGames,
+    faq: scrollToFaq,
+    footer: scrollToFooter,
+  };
 
   // Fade in logo opacity when showLogo changes
   useEffect(() => {
@@ -65,6 +72,16 @@ export function GlobalNavbar({ showLogo = true }) {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       setIsOpen((v) => !v);
+    }
+  };
+
+  const handleNavClick = (linkId) => {
+    const action = scrollActions[linkId];
+    if (action) {
+      action();
+    }
+    if (isMobile) {
+      setIsOpen(false);
     }
   };
 
@@ -127,10 +144,10 @@ export function GlobalNavbar({ showLogo = true }) {
                 {navLinks.map((link) => {
                   const Icon = link.icon;
                   return (
-                    <motion.li key={link.href} whileHover={{ y: -2 }} className="w-full lg:w-auto">
-                      <Link
-                        to={link.href}
-                        className="relative flex items-center gap-2 px-3 py-2 rounded-full hover:bg-black/10 transition-colors text-black text-sm group"
+                    <motion.li key={link.id} whileHover={{ y: -2 }} className="w-full lg:w-auto">
+                      <button
+                        onClick={() => handleNavClick(link.id)}
+                        className="relative flex items-center gap-2 px-3 py-2 rounded-full hover:bg-black/10 transition-colors text-black text-sm group w-full lg:w-auto cursor-pointer bg-transparent border-none"
                       >
                         <Icon size={16} />
                         <span>{link.label}</span>
@@ -138,7 +155,7 @@ export function GlobalNavbar({ showLogo = true }) {
                           className="absolute bottom-1 left-3 right-3 h-0.5 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right"
                           style={{ backgroundColor: link.underlineColor }}
                         />
-                      </Link>
+                      </button>
                     </motion.li>
                   );
                 })}
@@ -168,15 +185,14 @@ export function GlobalNavbar({ showLogo = true }) {
                 {navLinks.map((link) => {
                   const Icon = link.icon;
                   return (
-                    <motion.li key={link.href} whileTap={{ scale: 0.95 }}>
-                      <Link
-                        to={link.href}
-                        onClick={() => setIsOpen(false)}
-                        className="relative flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-black/10 transition-colors text-black text-base"
+                    <motion.li key={link.id} whileTap={{ scale: 0.95 }}>
+                      <button
+                        onClick={() => handleNavClick(link.id)}
+                        className="relative flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-black/10 transition-colors text-black text-base w-full cursor-pointer bg-transparent border-none"
                       >
                         <Icon size={20} />
                         <span className="font-medium">{link.label}</span>
-                      </Link>
+                      </button>
                     </motion.li>
                   );
                 })}
