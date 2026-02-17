@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'motion/react'
 import OlympicRings from './OlympicRings'
 import GoogleOlympicsHeading from './GoogleOlympicsHeading'
-import AdvityaCountdown from './AdvityaCountdown'
 
 const MobileParallaxBackground = ({ onRingsFadeStart = () => {} }) => {
     const [showHeading, setShowHeading] = useState(false);
-    const [showCountdown, setShowCountdown] = useState(true);
-    const [enableParallax, setEnableParallax] = useState(false);
+    const [enableParallax, setEnableParallax] = useState(true);
     const { scrollYProgress } = useScroll();
     const x = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -24,15 +22,6 @@ const MobileParallaxBackground = ({ onRingsFadeStart = () => {} }) => {
 
     return (
         <>
-            {showCountdown && (
-                <AdvityaCountdown 
-                    displayDuration={4000}
-                    onComplete={() => {
-                        setShowCountdown(false);
-                        setTimeout(() => setEnableParallax(true), 100);
-                    }}
-                />
-            )}
 
             <div className='sticky top-0 h-screen w-full z-0 border-none'>
                 <motion.div

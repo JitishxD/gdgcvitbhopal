@@ -132,6 +132,12 @@ const mediaDomain = {
                 linkedin: "https://in.linkedin.com/in/achyut-khetan-443673350",
                 github: "https://github.com/achyutkhetan",
             },
+            {
+                name: "Tushar Sharma",
+                role: "Core Member",
+                avatar: "/Domainimages/N-TechDomainimages/Videographyteamimages/Tushar Sharma.jpeg",
+                github: "https://github.com/tushhhhar0026",
+            },
         ],
     },
 };
