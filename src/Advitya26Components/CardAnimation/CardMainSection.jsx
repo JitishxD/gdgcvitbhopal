@@ -101,9 +101,7 @@ export default function CardMainSection({
             const scrollWidth = Math.max(0, scrollToCenter);
 
             const scaleDistance = scaleLastCard ? window.innerHeight * 1.5 : 0;
-            // Extra scroll buffer so the animation finishes before the pin ends
-            const scrollBuffer = scaleLastCard ? window.innerHeight * 0.6 : 0;
-            const totalDistance = scrollWidth + scaleDistance + scrollBuffer;
+            const totalDistance = scrollWidth + scaleDistance;
 
             if (totalDistance <= 0) return;
 
@@ -128,7 +126,6 @@ export default function CardMainSection({
             // Calculate durations based on scroll distances
             const phase1Duration = scrollWidth / totalDistance; // Horizontal scroll phase
             const phase2Duration = scaleDistance / totalDistance; // Scale phase
-            const bufferDuration = scrollBuffer / totalDistance; // Hold phase for scrub catchup
 
             // PHASE 1: Horizontal scroll until last card is CENTERED
             mainTL.to(
@@ -167,10 +164,7 @@ export default function CardMainSection({
                 ); // Start after phase 1
             }
 
-            // PHASE 3: Hold final state while scrub catches up
-            if (bufferDuration > 0) {
-                mainTL.to({}, { duration: bufferDuration });
-            }
+
 
             // Single ScrollTrigger with proper pinning
             ScrollTrigger.create({
@@ -179,7 +173,7 @@ export default function CardMainSection({
                 end: () => `+=${totalDistance}`,
                 pin: section,
                 pinSpacing: true,
-                scrub: 0.1,
+                scrub: 0.3,
                 animation: mainTL,
                 invalidateOnRefresh: true,
                 onUpdate: (self) => {

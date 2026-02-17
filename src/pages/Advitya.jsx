@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useAdvityaScrollContext } from "@/context/AdvityaScrollContext";
 import { GlobalNavbar } from "@/Advitya26Components/Navbar";
 import ParallaxBackground from "@/Advitya26Components/ParallaxBackground";
 import MobileParallaxBackground from "@/Advitya26Components/MobileParallaxBackground";
@@ -11,13 +12,16 @@ import ChoosePathCardMobile from "@/Advitya26Components/ChoosePathCardDir/Choose
 import FAQ from "@/Advitya26Components/FAQ";
 import AdvityaGallery3D from "@/Advitya26Components/AdvityaGallery3D";
 import AdvityaFooter from "@/Advitya26Components/AdvityaFooter";
+import AdvityaCountdown from "@/Advitya26Components/AdvityaCountdown";
 
 import "@/Advitya26Components/AdvityaMain.css";
 
 function Advitya() {
+    const [showSplash, setShowSplash] = useState(true);
     // State to control navbar logo visibility - starts hidden, shows when rings fade
     const [showNavbarLogo, setShowNavbarLogo] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const { homeRef, gamesRef, faqRef, footerRef } = useAdvityaScrollContext();
 
     // Detect mobile on mount and resize
     useEffect(() => {
@@ -45,6 +49,10 @@ function Advitya() {
         };
     }, []);
 
+    if (showSplash) {
+        return <AdvityaCountdown onFinish={() => setShowSplash(false)} />;
+    }
+
     return (
         <>
             <div className="fixed top-0 left-0 w-full h-[10vh] z-50">
@@ -62,32 +70,35 @@ function Advitya() {
 
             <div className="relative z-10" style={{ marginTop: "-100vh" }}>
                 {/* Space paralax background */}
-                <div style={{ height: "100vh" }} />
-                {isMobile ? (
-                    <CardMainSection
-                        bgColor="transparent"
-                        cardSize="2xl"
-                        scaleLastCard={true}
-                        lastCardInitialScale={0.3}
-                    >
-                        <AboutCard />
-                        <LoadingTextScroller />
-                        <ChoosePathCardMobile />
-                    </CardMainSection>
-                ) : (
-                    <CardMainSectionDesktop
-                        bgColor="transparent"
-                        cardSize="2xl"
-                        scaleLastCard={true}
-                        lastCardInitialScale={0.3}
-                    >
-                        <AboutCard />
-                        <LoadingTextScroller />
-                        <ChoosePathCard />
-                    </CardMainSectionDesktop>
-                )}
+                <div ref={homeRef} style={{ height: "100vh" }} />
+                <div ref={gamesRef}>
+                    {isMobile ? (
+                        <CardMainSection
+                            bgColor="transparent"
+                            cardSize="2xl"
+                            scaleLastCard={true}
+                            lastCardInitialScale={0.3}
+                        >
+                            <AboutCard />
+                            <LoadingTextScroller />
+                            <ChoosePathCardMobile />
+                        </CardMainSection>
+                    ) : (
+                        <CardMainSectionDesktop
+                            bgColor="transparent"
+                            cardSize="2xl"
+                            scaleLastCard={true}
+                            lastCardInitialScale={0.3}
+                        >
+                            <AboutCard />
+                            <LoadingTextScroller />
+                            <ChoosePathCard />
+                        </CardMainSectionDesktop>
+                    )}
+                </div>
 
                 <section
+                    ref={faqRef}
                     id="faq-section"
                     className="relative w-full"
                     style={{ zIndex: 1 }}
@@ -105,7 +116,9 @@ function Advitya() {
                 </section> */}
 
                 {/* Footer Section */}
-                <AdvityaFooter />
+                <div ref={footerRef}>
+                    <AdvityaFooter />
+                </div>
             </div>
         </>
     );
