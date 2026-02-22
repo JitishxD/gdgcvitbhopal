@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /teams/{teamId} {
+      allow read: if true;
+      allow write: if request.auth.uid in ["WHyYmSLgbKZU9DnPS1La5qOSz822", "JbXW9sBMUOeWMg1Q4lZYmb4oq2e2"];
+    }
+    match /config/{docId} {
+      allow read: if true;
+      allow write: if request.auth.uid in ["WHyYmSLgbKZU9DnPS1La5qOSz822", "JbXW9sBMUOeWMg1Q4lZYmb4oq2e2"];
+    }
+  }
+}
