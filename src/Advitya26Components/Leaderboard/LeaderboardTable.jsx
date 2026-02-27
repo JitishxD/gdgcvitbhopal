@@ -88,7 +88,7 @@ export default function LeaderboardTable({ teams, games }) {
                                         <span
                                             className={`inline-block px-1 sm:px-2 py-0.5 rounded-md text-xs sm:text-sm font-medium ${(team.scores?.[game.id] || 0) > 0
                                                 ? "text-gray-800 bg-gray-100"
-                                                : "text-gray-300"
+                                                : "text-black"
                                                 }`}
                                         >
                                             {team.scores?.[game.id] || 0}
