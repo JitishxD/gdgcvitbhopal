@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, Trash2, RotateCcw, AlertCircle } from "lucide-react";
 import {
     doc,
@@ -11,6 +11,36 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 
+function ScoreInput({ value, onCommit, name }) {
+    const [local, setLocal] = useState(String(value ?? 0));
+
+    useEffect(() => {
+        setLocal(String(value ?? 0));
+    }, [value]);
+
+    const commit = () => {
+        const num = parseInt(local, 10);
+        if (!isNaN(num)) {
+            onCommit(num);
+        } else {
+            setLocal(String(value ?? 0));
+        }
+    };
+
+    return (
+        <input
+            type="text"
+            inputMode="numeric"
+            name={name}
+            value={local}
+            onChange={(e) => setLocal(e.target.value)}
+            onBlur={commit}
+            onKeyDown={(e) => { if (e.key === "Enter") { e.target.blur(); } }}
+            className="w-full max-w-[48px] sm:max-w-[64px] mx-auto px-1 sm:px-2 py-1 sm:py-1.5 bg-gray-800/50 border border-white/10 rounded-lg text-center text-white text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-violet-500/50 transition-all hover:bg-gray-800/80"
+        />
+    );
+}
+
 export default function AdminGrid({ teams, games }) {
     const [newTeamName, setNewTeamName] = useState("");
     const [newGameName, setNewGameName] = useState("");
@@ -20,9 +50,7 @@ export default function AdminGrid({ teams, games }) {
     const [error, setError] = useState("");
 
     // -------- Score Management --------
-    const handleScoreChange = async (teamId, gameId, value) => {
-        const numValue = parseInt(value, 10);
-        if (isNaN(numValue) || numValue < 0) return;
+    const handleScoreChange = async (teamId, gameId, numValue) => {
         try {
             await updateDoc(doc(db, "teams", teamId), {
                 [`scores.${gameId}`]: numValue,
@@ -309,13 +337,10 @@ export default function AdminGrid({ teams, games }) {
                                     {/* Scores */}
                                     {games.map((game) => (
                                         <td key={game.id} className="px-1 sm:px-2 py-1 sm:py-2 text-center border-r border-white/10">
-                                            <input
-                                                type="number"
+                                            <ScoreInput
                                                 name={`score-${team.id}-${game.id}`}
-                                                min="0"
                                                 value={team.scores?.[game.id] || 0}
-                                                onChange={(e) => handleScoreChange(team.id, game.id, e.target.value)}
-                                                className="w-full max-w-[48px] sm:max-w-[64px] mx-auto px-1 sm:px-2 py-1 sm:py-1.5 bg-gray-800/50 border border-white/10 rounded-lg text-center text-white text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-violet-500/50 transition-all hover:bg-gray-800/80 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                                onCommit={(num) => handleScoreChange(team.id, game.id, num)}
                                             />
                                         </td>
                                     ))}
