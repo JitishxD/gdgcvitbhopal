@@ -79,24 +79,10 @@ const games = [
     },
     {
         id: 6,
-        name: "5-Legged Sprint",
-        description:
-            "Four players run a race while their legs are tied together, testing balance, coordination, and teamwork.",
-        icon: gameIcons.game6,
-        imgStyle: { transform: "scale(1.3)" },
-        rules: [
-            "4 players linked.",
-            "No untying ropes.",
-            "Resume if fallen.",
-            "🏆 Winner: First team to finish.",
-        ],
-    },
-    {
-        id: 7,
         name: "Red Light Green Light",
         description:
             'Players move only during "Green Light" and must freeze instantly at "Red Light" to avoid elimination.',
-        icon: gameIcons.game7,
+        icon: gameIcons.game6,
         imgStyle: { transform: "scale(1.3)" },
         rules: [
             "Move on Green, freeze on Red.",
@@ -105,28 +91,11 @@ const games = [
         ],
     },
     {
-        id: 8,
-        name: "Ballon Volley",
-        description:
-            "Two teams stand on opposite sides of a net. Play begins with a serve from behind the back line, sending the balloon over the net. Each team can hit the balloon up to three times before returning it, and no player may hit it twice in a row. Only light taps are allowed — no catching or holding.",
-        icon: gameIcons.game8,
-        imgStyle: { transform: "scale(1.3)" },
-        rules: [
-            "The balloon touches the ground on the opponent’s side.",
-            "The opponent sends the balloon out of bounds.",
-            "The opponent commits a rule violation.",
-            "The balloon must stay within court boundaries.",
-            "Players may not cross under or over the net into the opponent’s side.",
-            "The first team to reach the predetermined score (e.g., 15 or 21 points) wins.",
-            "Referee’s decision is final.",
-        ],
-    },
-    {
-        id: 9,
+        id: 7,
         name: "Auction Round",
         description:
             "Teams bid their points in auctions to win mystery boxes containing hidden rewards or penalties.",
-        icon: gameIcons.game9,
+        icon: gameIcons.game7,
         imgStyle: { transform: "scale(1.3)" },
         rules: [
             "Bid within point balance.",
@@ -135,11 +104,11 @@ const games = [
         ],
     },
     {
-        id: 10,
+        id: 8,
         name: "Code Relay",
         description:
             "Teams solve a coding problem in relay style, with each member coding for only 10 seconds and no communication allowed.",
-        icon: gameIcons.game10,
+        icon: gameIcons.game8,
         imgStyle: { transform: "scale(1.3)" },
         rules: [
             "10 sec per player.",
