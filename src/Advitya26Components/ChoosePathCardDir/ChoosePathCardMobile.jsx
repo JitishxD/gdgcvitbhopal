@@ -15,6 +15,13 @@ const games = [
             "Teams take turns flipping two cards to find matching pairs, using memory and strategy to score the most matches.",
         icon: gameIcons.game1,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "Flip 2 cards per turn.",
+            "Match → keep & play again.",
+            "No match → turn passes.",
+            "No hints or touching cards outside turn.",
+            "🏆 Winner: Most pairs collected.",
+        ],
     },
     {
         id: 2,
@@ -23,6 +30,11 @@ const games = [
             "Players recreate a given AI-generated image as closely as possible by writing effective text prompts—no image upload allowed.",
         icon: gameIcons.game2,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "No external help or image uploads.",
+            "Multiple attempts allowed.",
+            "🏆 Judging: Similarity, detail, style accuracy, creativity.",
+        ],
     },
     {
         id: 3,
@@ -31,6 +43,12 @@ const games = [
             "Teams build and defend a cup tower while teammates throw balls to knock down the opponent's tower within a time limit.",
         icon: gameIcons.game3,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "Builders stack cups (no glue/tape).",
+            "Throwers use balls by hand only.",
+            "No crossing boundaries.",
+            "🏆 Winner: Stronger surviving tower.",
+        ],
     },
     {
         id: 4,
@@ -39,6 +57,11 @@ const games = [
             "A blindfolded player navigates a taped maze using only indirect communication and teamwork from teammates.",
         icon: gameIcons.game4,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "Only Speaker can talk.",
+            "Signal Guides use gestures only.",
+            "🏆 Fastest clean completion wins.",
+        ],
     },
     {
         id: 5,
@@ -47,6 +70,12 @@ const games = [
             "Players race to claim positions on a 3×3 grid, aiming to form three in a row before the opposing team.",
         icon: gameIcons.game5,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "One runner per signal.",
+            "First to sit claims cell.",
+            "No pushing or blocking.",
+            "🏆 Winner: First line completed.",
+        ],
     },
     {
         id: 6,
@@ -55,6 +84,12 @@ const games = [
             "Four players run a race while their legs are tied together, testing balance, coordination, and teamwork.",
         icon: gameIcons.game6,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "4 players linked.",
+            "No untying ropes.",
+            "Resume if fallen.",
+            "🏆 Winner: First team to finish.",
+        ],
     },
     {
         id: 7,
@@ -63,6 +98,11 @@ const games = [
             'Players move only during "Green Light" and must freeze instantly at "Red Light" to avoid elimination.',
         icon: gameIcons.game7,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "Move on Green, freeze on Red.",
+            "Movement after Red = elimination.",
+            "🏆 Winner: First to finish.",
+        ],
     },
     {
         id: 8,
@@ -71,6 +111,7 @@ const games = [
             "A team passes a hoop through every member while holding hands the entire time, without breaking the chain.",
         icon: gameIcons.game8,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [],
     },
     {
         id: 9,
@@ -79,6 +120,11 @@ const games = [
             "Teams bid their points in auctions to win mystery boxes containing hidden rewards or penalties.",
         icon: gameIcons.game9,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "Bid within point balance.",
+            "Highest bid wins mystery box.",
+            "🏆 Winner: Highest total points.",
+        ],
     },
     {
         id: 10,
@@ -87,6 +133,12 @@ const games = [
             "Teams solve a coding problem in relay style, with each member coding for only 10 seconds and no communication allowed.",
         icon: gameIcons.game10,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "10 sec per player.",
+            "No talking.",
+            "Must compile successfully.",
+            "🏆 Winner: First correct solution.",
+        ],
     },
 ];
 
@@ -363,6 +415,19 @@ export default function ChoosePathCardMobile({ contentOpacity = 1 }) {
                                             <p className="font-serif text-[9px] leading-snug text-[#4a3728]">
                                                 {game.description}
                                             </p>
+                                            {game.rules && game.rules.length > 0 && (
+                                                <div className="mt-1 pt-1 border-t border-[#8B4513]/30">
+                                                    <h4 className="font-serif text-[8px] font-bold text-[#654321] uppercase tracking-wider mb-0.5">📜 Rules</h4>
+                                                    <ul className="space-y-0.5">
+                                                        {game.rules.map((rule, i) => (
+                                                            <li key={i} className="font-serif text-[8px] leading-snug text-[#4a3728] flex items-start gap-1">
+                                                                <span className="text-[#8B4513] mt-[1px]">•</span>
+                                                                <span>{rule}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
                                             <div className="mt-1.5 rounded-md overflow-hidden border border-[#8B4513]">
                                                 <img
                                                     src={game.icon}
