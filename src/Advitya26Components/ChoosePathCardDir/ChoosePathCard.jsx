@@ -15,6 +15,13 @@ const games = [
             "Teams take turns flipping two cards to find matching pairs, using memory and strategy to score the most matches.",
         icon: gameIcons.game1,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "Flip 2 cards per turn.",
+            "Match → keep & play again.",
+            "No match → turn passes.",
+            "No hints or touching cards outside turn.",
+            "🏆 Winner: Most pairs collected.",
+        ],
     },
     {
         id: 2,
@@ -23,6 +30,11 @@ const games = [
             "Players recreate a given AI-generated image as closely as possible by writing effective text prompts—no image upload allowed.",
         icon: gameIcons.game2,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "No external help or image uploads.",
+            "Multiple attempts allowed.",
+            "🏆 Judging: Similarity, detail, style accuracy, creativity.",
+        ],
     },
     {
         id: 3,
@@ -31,6 +43,12 @@ const games = [
             "Teams build and defend a cup tower while teammates throw balls to knock down the opponent's tower within a time limit.",
         icon: gameIcons.game3,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "Builders stack cups (no glue/tape).",
+            "Throwers use balls by hand only.",
+            "No crossing boundaries.",
+            "🏆 Winner: Stronger surviving tower.",
+        ],
     },
     {
         id: 4,
@@ -39,6 +57,11 @@ const games = [
             "A blindfolded player navigates a taped maze using only indirect communication and teamwork from teammates.",
         icon: gameIcons.game4,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "Only Speaker can talk.",
+            "Signal Guides use gestures only.",
+            "🏆 Fastest clean completion wins.",
+        ],
     },
     {
         id: 5,
@@ -47,6 +70,12 @@ const games = [
             "Players race to claim positions on a 3×3 grid, aiming to form three in a row before the opposing team.",
         icon: gameIcons.game5,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "One runner per signal.",
+            "First to sit claims cell.",
+            "No pushing or blocking.",
+            "🏆 Winner: First line completed.",
+        ],
     },
     {
         id: 6,
@@ -55,6 +84,12 @@ const games = [
             "Four players run a race while their legs are tied together, testing balance, coordination, and teamwork.",
         icon: gameIcons.game6,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "4 players linked.",
+            "No untying ropes.",
+            "Resume if fallen.",
+            "🏆 Winner: First team to finish.",
+        ],
     },
     {
         id: 7,
@@ -63,14 +98,28 @@ const games = [
             'Players move only during "Green Light" and must freeze instantly at "Red Light" to avoid elimination.',
         icon: gameIcons.game7,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "Move on Green, freeze on Red.",
+            "Movement after Red = elimination.",
+            "🏆 Winner: First to finish.",
+        ],
     },
     {
         id: 8,
-        name: "Pass the Hoop",
+        name: "Ballon Volley",
         description:
-            "A team passes a hoop through every member while holding hands the entire time, without breaking the chain.",
+            "Two teams stand on opposite sides of a net. Play begins with a serve from behind the back line, sending the balloon over the net. Each team can hit the balloon up to three times before returning it, and no player may hit it twice in a row. Only light taps are allowed — no catching or holding.",
         icon: gameIcons.game8,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "The balloon touches the ground on the opponent’s side.",
+            "The opponent sends the balloon out of bounds.",
+            "The opponent commits a rule violation.",
+            "The balloon must stay within court boundaries.",
+            "Players may not cross under or over the net into the opponent’s side.",
+            "The first team to reach the predetermined score (e.g., 15 or 21 points) wins.",
+            "Referee’s decision is final.",
+        ],
     },
     {
         id: 9,
@@ -79,6 +128,11 @@ const games = [
             "Teams bid their points in auctions to win mystery boxes containing hidden rewards or penalties.",
         icon: gameIcons.game9,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "Bid within point balance.",
+            "Highest bid wins mystery box.",
+            "🏆 Winner: Highest total points.",
+        ],
     },
     {
         id: 10,
@@ -87,6 +141,12 @@ const games = [
             "Teams solve a coding problem in relay style, with each member coding for only 10 seconds and no communication allowed.",
         icon: gameIcons.game10,
         imgStyle: { transform: "scale(1.3)" },
+        rules: [
+            "10 sec per player.",
+            "No talking.",
+            "Must compile successfully.",
+            "🏆 Winner: First correct solution.",
+        ],
     },
 ];
 
@@ -141,15 +201,17 @@ export default function ChoosePathCard({ contentOpacity = 1 }) {
 
             // Normalize Y coordination for each row to ensure straight horizontal lines
             const rowMap = new Map();
-            positions.forEach(pos => {
+            positions.forEach((pos) => {
                 const row = pos.gridPos.row;
                 if (!rowMap.has(row)) rowMap.set(row, []);
                 rowMap.get(row).push(pos);
             });
 
-            rowMap.forEach(rowPositions => {
-                const avgY = rowPositions.reduce((sum, p) => sum + p.y, 0) / rowPositions.length;
-                rowPositions.forEach(p => p.y = avgY);
+            rowMap.forEach((rowPositions) => {
+                const avgY =
+                    rowPositions.reduce((sum, p) => sum + p.y, 0) /
+                    rowPositions.length;
+                rowPositions.forEach((p) => (p.y = avgY));
             });
 
             // Helper function to create a line segment
@@ -331,7 +393,14 @@ export default function ChoosePathCard({ contentOpacity = 1 }) {
                                         />
                                     </div>
                                 ) : (
-                                    <span className="text-xl md:text-2xl lg:text-3xl select-none" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }}>🔒</span>
+                                    <span
+                                        className="text-xl md:text-2xl lg:text-3xl select-none"
+                                        style={{
+                                            filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.5))",
+                                        }}
+                                    >
+                                        🔒
+                                    </span>
                                 )}
                                 <div className="absolute -top-1 -right-1 w-4 h-4 md:w-5 md:h-5 bg-[#8B0000] text-white border-2 border-[#654321] rounded-full flex items-center justify-center font-bold text-[8px] md:text-[10px] shadow-md">
                                     {game.id}
@@ -356,13 +425,17 @@ export default function ChoosePathCard({ contentOpacity = 1 }) {
                             {/* Tooltip */}
                             {hoveredGame === game.id && (
                                 <motion.div
-                                    className={`absolute w-44 md:w-52 ${gridPos.row === 3
-                                        ? "bottom-full mb-0 left-0"
-                                        : (gridPos.row === 2
-                                            ? (gridPos.col >= 3 ? "right-full mr-0 top-1/2 -translate-y-1/2" : "left-full ml-0 top-1/2 -translate-y-1/2")
-                                            : (gridPos.col >= 3 ? "right-full mr-0 top-0" : "left-full ml-0 top-0")
-                                        )
-                                        }`}
+                                    className={`absolute w-44 md:w-52 ${
+                                        gridPos.row === 3
+                                            ? "bottom-full mb-0 left-0"
+                                            : gridPos.row === 2
+                                              ? gridPos.col >= 3
+                                                  ? "right-full mr-0 top-1/2 -translate-y-1/2"
+                                                  : "left-full ml-0 top-1/2 -translate-y-1/2"
+                                              : gridPos.col >= 3
+                                                ? "right-full mr-0 top-0"
+                                                : "left-full ml-0 top-0"
+                                    }`}
                                     style={{ zIndex: 1000 }}
                                     initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
@@ -376,6 +449,33 @@ export default function ChoosePathCard({ contentOpacity = 1 }) {
                                             <p className="font-serif text-[10px] md:text-xs leading-snug text-[#4a3728]">
                                                 {game.description}
                                             </p>
+                                            {game.rules &&
+                                                game.rules.length > 0 && (
+                                                    <div className="mt-1.5 pt-1.5 border-t border-[#8B4513]/30">
+                                                        <h4 className="font-serif text-[9px] md:text-[10px] font-bold text-[#654321] uppercase tracking-wider mb-1">
+                                                            📜 Rules
+                                                        </h4>
+                                                        <ul className="space-y-0.5">
+                                                            {game.rules.map(
+                                                                (rule, i) => (
+                                                                    <li
+                                                                        key={i}
+                                                                        className="font-serif text-[9px] md:text-[10px] leading-snug text-[#4a3728] flex items-start gap-1"
+                                                                    >
+                                                                        <span className="text-[#8B4513] mt-[1px]">
+                                                                            •
+                                                                        </span>
+                                                                        <span>
+                                                                            {
+                                                                                rule
+                                                                            }
+                                                                        </span>
+                                                                    </li>
+                                                                ),
+                                                            )}
+                                                        </ul>
+                                                    </div>
+                                                )}
                                             <div className="mt-2 rounded-md overflow-hidden border border-[#8B4513]">
                                                 <img
                                                     src={game.icon}
@@ -386,12 +486,15 @@ export default function ChoosePathCard({ contentOpacity = 1 }) {
                                         </div>
                                     ) : (
                                         <div className="bg-linear-to-br from-[#3b2716] to-[#2a1a0e] border-2 border-[#654321] rounded-lg p-3 shadow-xl text-center">
-                                            <div className="text-4xl mb-2">🏴‍☠️</div>
+                                            <div className="text-4xl mb-2">
+                                                🏴‍☠️
+                                            </div>
                                             <h3 className="font-serif text-xs md:text-sm font-bold text-[#d4af37] mb-1 pb-1 border-b border-[#8B4513] uppercase">
                                                 Challenge #{game.id}
                                             </h3>
                                             <p className="font-serif text-[10px] md:text-xs leading-snug text-[#c19a6b] italic">
-                                                This challenge is locked! Stay tuned for the big reveal...
+                                                This challenge is locked! Stay
+                                                tuned for the big reveal...
                                             </p>
                                             <div className="mt-2 py-1.5 px-2 bg-[rgba(139,69,19,0.3)] rounded-md border border-[#654321]">
                                                 <span className="font-serif text-[10px] md:text-xs font-bold text-[#d4af37] uppercase tracking-wider">
