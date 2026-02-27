@@ -79,24 +79,10 @@ const games = [
     },
     {
         id: 6,
-        name: "5-Legged Sprint",
-        description:
-            "Four players run a race while their legs are tied together, testing balance, coordination, and teamwork.",
-        icon: gameIcons.game6,
-        imgStyle: { transform: "scale(1.3)" },
-        rules: [
-            "4 players linked.",
-            "No untying ropes.",
-            "Resume if fallen.",
-            "🏆 Winner: First team to finish.",
-        ],
-    },
-    {
-        id: 7,
         name: "Red Light Green Light",
         description:
             'Players move only during "Green Light" and must freeze instantly at "Red Light" to avoid elimination.',
-        icon: gameIcons.game7,
+        icon: gameIcons.game6,
         imgStyle: { transform: "scale(1.3)" },
         rules: [
             "Move on Green, freeze on Red.",
@@ -105,20 +91,11 @@ const games = [
         ],
     },
     {
-        id: 8,
-        name: "Pass the Hoop",
-        description:
-            "A team passes a hoop through every member while holding hands the entire time, without breaking the chain.",
-        icon: gameIcons.game8,
-        imgStyle: { transform: "scale(1.3)" },
-        rules: [],
-    },
-    {
-        id: 9,
+        id: 7,
         name: "Auction Round",
         description:
             "Teams bid their points in auctions to win mystery boxes containing hidden rewards or penalties.",
-        icon: gameIcons.game9,
+        icon: gameIcons.game7,
         imgStyle: { transform: "scale(1.3)" },
         rules: [
             "Bid within point balance.",
@@ -127,11 +104,11 @@ const games = [
         ],
     },
     {
-        id: 10,
+        id: 8,
         name: "Code Relay",
         description:
             "Teams solve a coding problem in relay style, with each member coding for only 10 seconds and no communication allowed.",
-        icon: gameIcons.game10,
+        icon: gameIcons.game8,
         imgStyle: { transform: "scale(1.3)" },
         rules: [
             "10 sec per player.",
